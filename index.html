@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aneed Wi-fi</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            gap: 16px;
+            flex-direction: column;
+        }
+
+        .img-mkt img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .get-info form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .get-info .form-fields .input-field {
+            outline: none;
+            font-size: 16px;
+        }
+
+        .get-info .form-fields input[type="text"] {
+
+            padding: 4px;
+            width: 100%;
+        }
+
+        .get-info .accept {
+            display: flex;
+            align-items: start;
+            gap: 4px;
+        }
+
+        .get-info .form-fields input[type="text"]:focus {
+            border-color: rgba(71, 102, 240, 0.418);
+            transition: 0.2s all;
+        }
+
+        .get-info .form-fields input[type="submit"] {
+            background-color: rgb(71, 102, 240);
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            padding: 4px 16px;
+            border: 1px solid rgb(139, 119, 119);
+        }
+
+        .get-info .form-fields input[type="submit"]:hover {
+            transition: 0.2s all;
+            background-color: rgba(71, 102, 240, 0.808);
+        }
+
+        .get-info .form-fields:last-child {
+            text-align: center;
+        }
+
+        /*Ipad ngang(1024 x 768)*/
+        @media screen and (max-width: 1024px) {
+            .container {
+                max-width: 960px;
+                margin: 0 auto;
+            }
+        }
+
+        /*Ipad dọc(768 x 1024)*/
+        @media screen and (max-width: 767px) {}
+
+        /*Tablet nhỏ(480 x 640)*/
+        @media screen and (max-width: 480px) {
+            .get-info form {
+                padding: 0 16px;
+            }
+
+            .get-info .form-fields input[type="number"] {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="img-mkt">
+                <img src="./img/banner.jpg" alt="">
+            </div>
+            <div class="get-info">
+                <form method="get" id="myForm" action="#">
+                    <div class="form-fields">
+                        <input type="text" id="phone" title="Vui lòng nhập số điện thoại hợp lệ !"
+                            placeholder="(+84) 356-224-253" name="phone" pattern="^0\d{9,10}$" required
+                            autocomplete="off" />
+                    </div>
+                    <div class="form-fields accept">
+                        <input type="checkbox" name="check" id="check" class="input-field" required />
+                        <span>Bạn đồng ý với chính sách và điều khoản của chúng tôi</span>
+                    </div>
+                    <div class="form-fields">
+                        <input type="submit" name="submit" id="submit" class="input-field" value="Xác nhận" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        let myForm = document.getElementById("myForm");
+        let phoneNumber = document.getElementById("phone");
+        myForm.addEventListener("submit", (e) => {
+            // e.preventDefault();
+
+            console.log(phoneNumber.value)
+        });
+        phoneNumber.addEventListener("keypress", (event) => {
+            var regex = new RegExp("[0-9]");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    </script>
+</body>
+
+</html>
